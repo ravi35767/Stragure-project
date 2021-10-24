@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useFormik } from "formik";
 import "../App.css";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
@@ -13,12 +13,29 @@ import Header from "./Header";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import MasterTable from "./MasterTable";
+import { genrateSchema } from "../validation";
 
 export default function LeftSideForm() {
   const [openTable, setOpenTable] = useState(true);
   const HandlerCheck = () => {
     setOpenTable(false);
   };
+
+  const initialValues = {
+    weight: "",
+    minutes: "",
+    date: "",
+    speedSettings: "",
+    dryWaste: "",
+    lostBuds: "",
+  };
+
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      onSubmit: (values, actions) => {},
+      validationSchema: genrateSchema(initialValues),
+    });
 
   return (
     <>
@@ -55,37 +72,49 @@ export default function LeftSideForm() {
                 </FormControl>
               </div>
               <div>
-                <label htmlFor>Dry Room (Phase)</label>
-                <input
-                  type="text"
-                  name="city"
-                  list="cityname"
-                  placeholder="select"
-                />
-                <datalist id="cityname">
-                  <option value="Test1"></option>
-                  <option value="Test2"></option>
-                  <option value="Test3"></option>
-                  <option value="Test4"></option>
-                  <option value="Test5"></option>
-                </datalist>
+                <div>
+                  <label htmlFor>Dry Room (Phase)</label>
+                </div>
+                <select name="meal" style={{ height: 35, width: "100%" }}>
+                  <option selected="selected" value="0">
+                    Select
+                  </option>
+                  <option value="test1">test1</option>
+                  <option value="test2">test2</option>
+                  <option value="test3">test3</option>
+                  <option value="test4">test4</option>
+                  <option value="test5">test5</option>
+                </select>
               </div>
 
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <label htmlFor>Date</label>
-                <input type="date" style={{ width: "25%" }} />
+                <input
+                  type="date"
+                  style={{ width: "25%" }}
+                  name="date"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.date}
+                  touched={touched.date}
+                />
               </div>
+              <div class="error">{errors.date}</div>
               <br />
               <div>
-                <label htmlFor>Operator (PH2)</label>
-                <input type="text" name="city" list="cityname" />
-                <datalist id="cityname">
-                  <option value="Test1"></option>
-                  <option value="Test2"></option>
-                  <option value="Test3"></option>
-                  <option value="Test4"></option>
-                  <option value="Test5"></option>
-                </datalist>
+                <div>
+                  <label htmlFor>Operator (PH2)</label>
+                  <select name="meal" style={{ height: 35, width: "100%" }}>
+                    <option selected="selected" value="0">
+                      Select
+                    </option>
+                    <option value="test1">test1</option>
+                    <option value="test2">test2</option>
+                    <option value="test3">test3</option>
+                    <option value="test4">test4</option>
+                    <option value="test5">test5</option>
+                  </select>
+                </div>
                 <br />
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <a href style={{ marginRight: 8 }}>
@@ -98,20 +127,19 @@ export default function LeftSideForm() {
               </div>
               <br />
               <div>
-                <label htmlFor>Operator (PH3)</label>
-                <input
-                  type="text"
-                  name="city"
-                  list="cityname"
-                  placeholder="select..."
-                />
-                <datalist id="cityname">
-                  <option value="Test1"></option>
-                  <option value="Test2"></option>
-                  <option value="Test3"></option>
-                  <option value="Test4"></option>
-                  <option value="Test5"></option>
-                </datalist>
+                <div>
+                  <label htmlFor>Operator (PH3)</label>
+                  <select name="meal" style={{ height: 35, width: "100%" }}>
+                    <option selected="selected" value="0">
+                      Select
+                    </option>
+                    <option value="test1">test1</option>
+                    <option value="test2">test2</option>
+                    <option value="test3">test3</option>
+                    <option value="test4">test4</option>
+                    <option value="test5">test5</option>
+                  </select>
+                </div>
                 <div style={{ display: "flex", flexDirection: "row" }}>
                   <a href style={{ marginRight: 8 }}>
                     <AddIcon />
@@ -123,47 +151,62 @@ export default function LeftSideForm() {
               </div>
               <br />
               <div>
-                <label htmlFor>Strain</label>
-                <input
-                  type="text"
-                  name="city"
-                  list="cityname"
-                  placeholder="select..."
-                />
-                <datalist id="cityname">
-                  <option value="Test1"></option>
-                  <option value="Test2"></option>
-                  <option value="Test3"></option>
-                  <option value="Test4"></option>
-                  <option value="Test5"></option>
-                </datalist>
+                <div>
+                  <label htmlFor>Strain</label>
+                  <select name="meal" style={{ height: 35, width: "100%" }}>
+                    <option selected="selected" value="0">
+                      Select
+                    </option>
+                    <option value="test1">test1</option>
+                    <option value="test2">test2</option>
+                    <option value="test3">test3</option>
+                    <option value="test4">test4</option>
+                    <option value="test5">test5</option>
+                  </select>
+                </div>
               </div>
               <br />
               <div>
-                <label htmlFor>Flower Room</label>
-                <input
-                  type="text"
-                  name="city"
-                  list="cityname"
-                  placeholder="select..."
-                />
-                <datalist id="cityname">
-                  <option value="Test1"></option>
-                  <option value="Test2"></option>
-                  <option value="Test3"></option>
-                  <option value="Test4"></option>
-                  <option value="Test5"></option>
-                </datalist>
+                <div>
+                  <label htmlFor>Flower Room</label>
+                  <select name="meal" style={{ height: 35, width: "100%" }}>
+                    <option selected="selected" value="0">
+                      Select
+                    </option>
+                    <option value="test1">test1</option>
+                    <option value="test2">test2</option>
+                    <option value="test3">test3</option>
+                    <option value="test4">test4</option>
+                    <option value="test5">test5</option>
+                  </select>
+                </div>
               </div>
               <br />
               <div>
                 <label htmlFor>Weight (Grams)</label>
-                <input type="number" />
+                <input
+                  type="number"
+                  name="weight"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.weight}
+                  touched={touched.weight}
+                />
               </div>
+
+              <div class="error">{errors.weight}</div>
               <div>
                 <label htmlFor>Minutes</label>
-                <input type="text" />
+                <input
+                  type="text"
+                  name="minutes"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.minutes}
+                  touched={touched.minutes}
+                />
               </div>
+              <div class="error">{errors.minutes}</div>
               <div>
                 <Button
                   id="demo-customized-button"
@@ -176,7 +219,7 @@ export default function LeftSideForm() {
                     marginTop: 20,
                     marginBottom: 30,
                   }}
-                  onClick={() => HandlerCheck()}
+                  onClick={() => handleSubmit()}
                 >
                   Submit
                 </Button>
@@ -188,17 +231,41 @@ export default function LeftSideForm() {
             <Divider style={{ marginBottom: 15 }} />
             <div style={{ marginBottom: 15 }}>
               <label htmlFor>Lost Buds</label>
-              <input type="text" />
+              <input
+                type="text"
+                name="lostBuds"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lostBuds}
+                touched={touched.lostBuds}
+              />
             </div>
+            <div class="error">{errors.lostBuds}</div>
             <div style={{ marginBottom: 15 }}>
               <label htmlFor>Dry Waste</label>
-              <input type="text" />
+              <input
+                type="text"
+                name="dryWaste"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.dryWaste}
+                touched={touched.dryWaste}
+              />
             </div>
+            <div class="error">{errors.dryWaste}</div>
             <Divider style={{ marginBottom: 15 }} />
             <div>
               <label htmlFor>Speed Settings</label>
-              <input type="text" />
+              <input
+                type="text"
+                name="speedSettings"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.speedSettings}
+                touched={touched.speedSettings}
+              />
             </div>
+            <div class="error">{errors.dryWaste}</div>
           </Grid>
         </Grid>
       ) : (

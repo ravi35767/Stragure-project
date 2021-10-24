@@ -45,6 +45,12 @@
   /* box-shadow: 10px 20px 15px #aaaaaa; */
 }
 
+.error {
+  font-size: 12px;
+  color: red;
+  padding: 0 0 10px 10px;
+}
+
 input[type="text"],
 input[type="date"],
 input[type="number"] {
@@ -83,4 +89,9 @@ i {
   margin-left: 5px;
   margin-top: 5px;
   color: rgb(105, 101, 101);
+}
+
+.select.dry-room {
+  height: 34px;
+  width: 100%;
 }
