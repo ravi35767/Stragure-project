@@ -28,29 +28,35 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, calories, fat, carbs, protein,flower,weight,min,lost,dry,speed) {
+  return { name, calories, fat, carbs, protein,flower,weight,min,lost,dry,speed };
 }
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
 
-export default function MasterTable() {
+
+export default function MasterTable({values}) {
+  const rows = [
+  createData(values.dry,values.date,values.ph2,values.ph3,values.strain,values.flower,values.weight,values.minutes,values.lostBuds,values.dryWaste,values.speedSettings)
+
+  // createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+];
   return (
     <TableContainer component={Paper} style={{ marginTop: 20 }}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell>Dry Room  (Phase)</StyledTableCell>
+            <StyledTableCell align="right">Date</StyledTableCell>
+            <StyledTableCell align="right">Operator (PH2)</StyledTableCell>
+            <StyledTableCell align="right">Operator (PH3)</StyledTableCell>
+            <StyledTableCell align="right">Strain</StyledTableCell>
+            <StyledTableCell align="right">Flower Room</StyledTableCell>
+            <StyledTableCell align="right">Weight (Grams)</StyledTableCell>
+            <StyledTableCell align="right">Minutes</StyledTableCell>
+            <StyledTableCell align="right">Lost Buds</StyledTableCell>
+            <StyledTableCell align="right">Dry Waste</StyledTableCell>
+            <StyledTableCell align="right">Speed Settings</StyledTableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -63,6 +69,15 @@ export default function MasterTable() {
               <StyledTableCell align="right">{row.fat}</StyledTableCell>
               <StyledTableCell align="right">{row.carbs}</StyledTableCell>
               <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                {row.flower}
+              </StyledTableCell>
+              <StyledTableCell align="right">{row.weight}</StyledTableCell>
+              <StyledTableCell align="right">{row.min}</StyledTableCell>
+              <StyledTableCell align="right">{row.lost}</StyledTableCell>
+              <StyledTableCell align="right">{row.dry}</StyledTableCell>
+              <StyledTableCell align="right">{row.speed}</StyledTableCell>
+              
             </StyledTableRow>
           ))}
         </TableBody>
