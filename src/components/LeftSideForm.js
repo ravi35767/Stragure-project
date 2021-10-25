@@ -28,19 +28,17 @@ export default function LeftSideForm() {
     speedSettings: "",
     dryWaste: "",
     lostBuds: "",
-    dry:'test1',
-    ph2:'test1',
-    ph3:'test1',
-    strain:'test1',
-    flower:'test1',
-
+    dry: "test1",
+    ph2: "test1",
+    ph3: "test1",
+    strain: "test1",
+    flower: "test1",
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
       onSubmit: (values, actions) => {
-
         setOpenTable(false);
       },
       validationSchema: genrateSchema(initialValues),
@@ -84,11 +82,15 @@ export default function LeftSideForm() {
                 <div>
                   <label htmlFor>Dry Room (Phase)</label>
                 </div>
-                <select name="meal" style={{ height: 35, width: "100%" }}  name="dry"
+                <select
+                  name="meal"
+                  style={{ height: 35, width: "100%" }}
+                  name="dry"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.dry}
-                  touched={touched.dry}>
+                  touched={touched.dry}
+                >
                   <option selected="selected" value="0">
                     Select
                   </option>
@@ -117,13 +119,15 @@ export default function LeftSideForm() {
               <div>
                 <div>
                   <label htmlFor>Operator (PH2)</label>
-                  <select name="meal" style={{ height: 35, width: "100%" }} 
-                  name="ph2"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.ph2}
-                  touched={touched.ph2}>
-                   
+                  <select
+                    name="meal"
+                    style={{ height: 35, width: "100%" }}
+                    name="ph2"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.ph2}
+                    touched={touched.ph2}
+                  >
                     <option value="test1">test1</option>
                     <option value="test2">test2</option>
                     <option value="test3">test3</option>
@@ -145,15 +149,15 @@ export default function LeftSideForm() {
               <div>
                 <div>
                   <label htmlFor>Operator (PH3)</label>
-                  <select name="meal" style={{ height: 35, width: "100%" }}
-                   name="ph3"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.ph3}
-                  touched={touched.ph3}
+                  <select
+                    name="meal"
+                    style={{ height: 35, width: "100%" }}
+                    name="ph3"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.ph3}
+                    touched={touched.ph3}
                   >
-                   
-                   
                     <option value="test1">test1</option>
                     <option value="test2">test2</option>
                     <option value="test3">test3</option>
@@ -174,14 +178,15 @@ export default function LeftSideForm() {
               <div>
                 <div>
                   <label htmlFor>Strain</label>
-                  <select name="meal" style={{ height: 35, width: "100%" }}
-                   name="strain"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.strain}
-                  touched={touched.strain}
+                  <select
+                    name="meal"
+                    style={{ height: 35, width: "100%" }}
+                    name="strain"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.strain}
+                    touched={touched.strain}
                   >
-                    
                     <option value="test1">test1</option>
                     <option value="test2">test2</option>
                     <option value="test3">test3</option>
@@ -194,12 +199,14 @@ export default function LeftSideForm() {
               <div>
                 <div>
                   <label htmlFor>Flower Room</label>
-                  <select name="meal" style={{ height: 35, width: "100%" }} 
-                   name="flower"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.flower}
-                  touched={touched.flower}
+                  <select
+                    name="meal"
+                    style={{ height: 35, width: "100%" }}
+                    name="flower"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.flower}
+                    touched={touched.flower}
                   >
                     <option selected="selected" value="0">
                       Select
@@ -300,7 +307,7 @@ export default function LeftSideForm() {
           </Grid>
         </Grid>
       ) : (
-        <MasterTable values={values}/>
+        <MasterTable values={values} />
       )}
     </>
   );
